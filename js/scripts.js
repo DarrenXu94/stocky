@@ -75,21 +75,28 @@ for (let character of characters) {
   const departureDiv =
     "#month_" + dayjs(character.departure, "DD/MM/YYYY").format("YYYY-MM");
 
-  const projectShrinkTimeline = gsap.timeline({
-    scrollTrigger: {
-      trigger: arrivalDiv,
-      markers: true,
-      start: "top center",
-      end: "top center",
-      endTrigger: departureDiv,
-      toggleActions: "play reverse play reverse",
-      onEnter: () => modifyCharactersPresent(1),
-      onLeave: () => modifyCharactersPresent(-1),
-      onEnterBack: () => modifyCharactersPresent(1),
-      onLeaveBack: () => modifyCharactersPresent(-1),
+  let triggerOpts = {
+    trigger: arrivalDiv,
+    markers: true,
+    start: "top center",
+    end: "top center",
+    // endTrigger: departureDiv,
+    toggleActions: "play reverse play reverse",
+    onEnter: () => modifyCharactersPresent(1),
+    onLeave: () => modifyCharactersPresent(-1),
+    onEnterBack: () => modifyCharactersPresent(1),
+    onLeaveBack: () => modifyCharactersPresent(-1),
+  };
 
-      // scrub: true,
-    },
+  if (character.departure) {
+    triggerOpts.endTrigger = departureDiv;
+  } else {
+    triggerOpts.endTrigger = "body";
+    triggerOpts.end = "bottom bottom";
+  }
+
+  const projectShrinkTimeline = gsap.timeline({
+    scrollTrigger: triggerOpts,
   });
 
   const shrinkTween = gsap.fromTo(

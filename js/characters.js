@@ -11,4 +11,9 @@ export const characters = [
     departure: "19/12/2021",
     img: "jono.png",
   },
+  {
+    name: "Ash",
+    arrival: "28/08/2019",
+    img: "ash.png",
+  },
 ];
