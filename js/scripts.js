@@ -49,7 +49,7 @@ const modifyCharactersPresent = (val) => {
     charactersPresent;
 };
 
-const TWEEN_DISTANCE = 50;
+const TWEEN_DISTANCE = -50;
 
 // Append characters
 for (let character of characters) {
