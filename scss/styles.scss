@@ -1,0 +1,25 @@
+.month-container {
+  min-height: 200px;
+}
+
+.character {
+  position: fixed;
+  top: 0;
+  .newCharacterLabel {
+    text-align: center;
+  }
+  img {
+    width: 200px;
+    height: 200px;
+    object-fit: scale-down;
+  }
+}
+
+#character-counter {
+  position: fixed;
+  top: 0;
+  right: 0;
+  &::after {
+    content: attr(data-characters-present);
+  }
+}
