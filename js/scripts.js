@@ -39,7 +39,16 @@ for (let event of events) {
   const currentDiv = document.getElementById(monthAndYear);
 
   const newContent = document.createElement("div");
+  newContent.classList.add("content-event");
   newContent.innerHTML = event.title;
+
+  if (event.pics) {
+    for (let pic of event.pics) {
+      const newImg = document.createElement("img");
+      newImg.src = "/assets/events/" + pic;
+      newContent.appendChild(newImg);
+    }
+  }
 
   currentDiv.appendChild(newContent);
 }
