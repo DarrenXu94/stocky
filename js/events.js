@@ -1,6 +1,6 @@
 export const events = [
   {
-    title: "The beginning",
+    title: "The arrival of Daz",
     date: "30/04/2017",
   },
 ];

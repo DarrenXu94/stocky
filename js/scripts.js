@@ -3,7 +3,7 @@ import { characters } from "./characters.js";
 dayjs.extend(window.dayjs_plugin_customParseFormat);
 gsap.registerPlugin(ScrollTrigger);
 
-const startDate = dayjs("2017-04-30");
+const startDate = dayjs("2017-01-01");
 const today = dayjs();
 
 // Create the month divs
@@ -23,6 +23,7 @@ for (var i = 0; i < monthDiff; i++) {
 }
 
 let charactersPresent = 0;
+let charactersRendered = 0;
 
 // Create character counter
 const characterCounterDiv = document.createElement("div");
@@ -104,10 +105,8 @@ for (let character of characters) {
     { xPercent: 0, opacity: 0 },
     {
       xPercent: () => {
-        return (
-          document.getElementById("character-counter").dataset
-            .charactersPresent * TWEEN_DISTANCE
-        );
+        charactersRendered += 1;
+        return charactersRendered * TWEEN_DISTANCE;
       },
       opacity: 1,
     }

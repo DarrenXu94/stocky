@@ -5,13 +5,13 @@
 .character {
   position: fixed;
   top: 15%;
-  right: 15%;
+  right: 0;
   .newCharacterLabel {
     text-align: center;
   }
   img {
-    width: 200px;
-    height: 200px;
+    width: 120px;
+    height: 120px;
     object-fit: scale-down;
   }
 }
