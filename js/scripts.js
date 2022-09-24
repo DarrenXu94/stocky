@@ -40,15 +40,25 @@ for (let event of events) {
 
   const newContent = document.createElement("div");
   newContent.classList.add("content-event");
-  newContent.innerHTML = event.title;
+
+  const newParagraph = document.createElement("p");
+
+  newParagraph.innerHTML = event.title;
+  newParagraph.classList.add("content-event-paragraph");
+  newContent.appendChild(newParagraph);
+
+  const imageContainer = document.createElement("div");
+  imageContainer.classList.add("image-container");
 
   if (event.pics) {
     for (let pic of event.pics) {
       const newImg = document.createElement("img");
       newImg.src = "/assets/events/" + pic;
-      newContent.appendChild(newImg);
+      imageContainer.appendChild(newImg);
     }
   }
+
+  newContent.appendChild(imageContainer);
 
   currentDiv.appendChild(newContent);
 }
