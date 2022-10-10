@@ -27,17 +27,38 @@ h1 {
   }
 }
 
-.character {
+#sticky-footer {
+  height: 300px;
+  border-top: 3px solid black;
   position: fixed;
-  top: 15%;
+  bottom: 0;
+  width: 100%;
+  background: white;
+  h3 {
+    text-align: center;
+  }
+}
+
+.character {
+  position: absolute;
+  top: 35%;
   right: 0;
   .newCharacterLabel {
     text-align: center;
+  }
+  @media (max-width: 768px) {
+    top: 5%;
   }
   img {
     width: 170px;
     height: 170px;
     object-fit: scale-down;
+  }
+  @media (max-width: 768px) {
+    img {
+      width: 75px;
+      height: 75px;
+    }
   }
 }
 

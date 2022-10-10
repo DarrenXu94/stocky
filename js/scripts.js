@@ -8,22 +8,25 @@ const today = dayjs();
 
 // Create the month divs
 
-const monthDiff = today.diff(startDate, "month");
+// const monthDiff = today.diff(startDate, "month");
 
-const contentElement = document.getElementById("content");
+// const contentElement = document.getElementById("content");
 
-for (var i = 0; i < monthDiff; i++) {
-  const newMonth = document.createElement("div");
+// for (var i = 0; i < monthDiff; i++) {
+//   const newMonth = document.createElement("div");
 
-  const date = startDate.add(i, "month");
-  newMonth.classList.add("month-container");
-  newMonth.innerHTML = date.format("MMM YYYY");
-  newMonth.id = "month_" + date.format("YYYY-MM");
-  contentElement.appendChild(newMonth);
-}
+//   const date = startDate.add(i, "month");
+//   newMonth.classList.add("month-container");
+//   newMonth.innerHTML = date.format("MMM YYYY");
+//   newMonth.id = "month_" + date.format("YYYY-MM");
+//   contentElement.appendChild(newMonth);
+// }
 
 let charactersPresent = 0;
 let charactersRendered = 0;
+
+const contentElement = document.getElementById("content");
+const footerElement = document.getElementById("sticky-footer");
 
 // Create character counter
 const characterCounterDiv = document.createElement("div");
@@ -36,7 +39,7 @@ contentElement.appendChild(characterCounterDiv);
 for (let event of events) {
   const monthAndYear =
     "month_" + dayjs(event.date, "DD/MM/YYYY").format("YYYY-MM");
-  const currentDiv = document.getElementById(monthAndYear);
+  // const currentDiv = document.getElementById(monthAndYear);
 
   const newContent = document.createElement("div");
   newContent.classList.add("content-event");
@@ -60,7 +63,7 @@ for (let event of events) {
 
   newContent.appendChild(imageContainer);
 
-  currentDiv.appendChild(newContent);
+  contentElement.appendChild(newContent);
 }
 
 const modifyCharactersPresent = (val) => {
@@ -87,7 +90,7 @@ for (let character of characters) {
   newCharacter.appendChild(characterImg);
   newCharacter.appendChild(newCharacterLabel);
 
-  contentElement.appendChild(newCharacter);
+  footerElement.appendChild(newCharacter);
 
   const arrivalDiv =
     "#month_" + dayjs(character.arrival, "DD/MM/YYYY").format("YYYY-MM");
