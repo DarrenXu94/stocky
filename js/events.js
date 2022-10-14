@@ -1,9 +1,5 @@
 export const events = [
   {
-    title: "The arrival of Daz",
-    date: "30/04/2017",
-  },
-  {
     title: "Hennimore",
     date: "24/05/2017",
     pics: ["henni_1.jpeg", "henni_2.jpeg"],

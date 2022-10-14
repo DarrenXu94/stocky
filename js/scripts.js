@@ -3,25 +3,6 @@ import { characters } from "./characters.js";
 dayjs.extend(window.dayjs_plugin_customParseFormat);
 gsap.registerPlugin(ScrollTrigger);
 
-const startDate = dayjs("2017-01-01");
-const today = dayjs();
-
-// Create the month divs
-
-// const monthDiff = today.diff(startDate, "month");
-
-// const contentElement = document.getElementById("content");
-
-// for (var i = 0; i < monthDiff; i++) {
-//   const newMonth = document.createElement("div");
-
-//   const date = startDate.add(i, "month");
-//   newMonth.classList.add("month-container");
-//   newMonth.innerHTML = date.format("MMM YYYY");
-//   newMonth.id = "month_" + date.format("YYYY-MM");
-//   contentElement.appendChild(newMonth);
-// }
-
 let charactersPresent = 0;
 let charactersRendered = 0;
 
@@ -35,20 +16,45 @@ characterCounterDiv.innerHTML = "Characters present: ";
 characterCounterDiv.dataset.charactersPresent = 0;
 contentElement.appendChild(characterCounterDiv);
 
-// Append events
-for (let event of events) {
-  const monthAndYear =
-    "month_" + dayjs(event.date, "DD/MM/YYYY").format("YYYY-MM");
-  // const currentDiv = document.getElementById(monthAndYear);
+const fullEventList = [
+  ...events,
+  ...characters.reduce((acc, character) => {
+    const characterEnd = { ...character };
+    characterEnd.date = character.departure;
+    characterEnd.status = "leaving";
+    character.date = character.arrival;
 
+    return [...acc, character, characterEnd];
+  }, []),
+];
+
+const sortedList = fullEventList.sort(function (a, b) {
+  // Turn your strings into dates, and then subtract them
+  // to get a value that is either negative, positive, or zero.
+  return (dayjs(b.date, "DD/MM/YYYY") - dayjs(a.date, "DD/MM/YYYY")) * -1;
+});
+
+// Append events
+for (let event of sortedList) {
   const newContent = document.createElement("div");
   newContent.classList.add("content-event");
 
   const newParagraph = document.createElement("p");
 
-  newParagraph.innerHTML = event.title;
   newParagraph.classList.add("content-event-paragraph");
   newContent.appendChild(newParagraph);
+
+  if (event.name) {
+    if (event.status == "leaving") {
+      newContent.id = event.name + "_end";
+      newParagraph.innerHTML = "Departure: " + event.name;
+    } else {
+      newParagraph.innerHTML = "New arrival: " + event.name;
+      newContent.id = event.name + "_start";
+    }
+  } else {
+    newParagraph.innerHTML = event.title;
+  }
 
   const imageContainer = document.createElement("div");
   imageContainer.classList.add("image-container");
@@ -72,7 +78,7 @@ const modifyCharactersPresent = (val) => {
     charactersPresent;
 };
 
-const TWEEN_DISTANCE = -50;
+const TWEEN_DISTANCE = 50;
 
 // Append characters
 for (let character of characters) {
@@ -92,11 +98,9 @@ for (let character of characters) {
 
   footerElement.appendChild(newCharacter);
 
-  const arrivalDiv =
-    "#month_" + dayjs(character.arrival, "DD/MM/YYYY").format("YYYY-MM");
+  const arrivalDiv = "#" + character.name + "_start";
 
-  const departureDiv =
-    "#month_" + dayjs(character.departure, "DD/MM/YYYY").format("YYYY-MM");
+  const departureDiv = "#" + character.name + "_end";
 
   let triggerOpts = {
     trigger: arrivalDiv,

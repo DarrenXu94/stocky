@@ -3,6 +3,8 @@
   --secondary-font: 'Libre Franklin', sans-serif;
   --tertiary-font: font-family: 'Maitree', serif;
 
+  --footer-height: 300px;
+
   font-family: var(--tertiary-font) !important;
 
 }
@@ -14,6 +16,7 @@ p {
 h1 {
   font-family: var(--base-font) !important;
 }
+
 
 .month-container {
   min-height: 200px;
@@ -27,8 +30,12 @@ h1 {
   }
 }
 
+#content {
+  padding-bottom: var(--footer-height);
+}
+
 #sticky-footer {
-  height: 300px;
+  height: var(--footer-height);
   border-top: 3px solid black;
   position: fixed;
   bottom: 0;
@@ -42,7 +49,7 @@ h1 {
 .character {
   position: absolute;
   top: 35%;
-  right: 0;
+  left: 0;
   .newCharacterLabel {
     text-align: center;
   }
