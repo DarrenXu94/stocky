@@ -3,6 +3,11 @@ import { characters } from "./characters.js";
 dayjs.extend(window.dayjs_plugin_customParseFormat);
 gsap.registerPlugin(ScrollTrigger);
 
+const isLocalHost =
+  location.hostname === "localhost" ||
+  location.hostname === "127.0.0.1" ||
+  location.hostname === "";
+
 let charactersPresent = 0;
 let charactersRendered = 0;
 
@@ -104,7 +109,7 @@ for (let character of characters) {
 
   let triggerOpts = {
     trigger: arrivalDiv,
-    markers: true,
+    markers: isLocalHost,
     start: "top center",
     end: "top center",
     // endTrigger: departureDiv,

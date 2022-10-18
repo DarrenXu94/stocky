@@ -11,6 +11,11 @@
 
   font-family: var(--tertiary-font) !important;
 
+  @media (max-width: 768px) {
+    --footer-height: 150px;
+
+  }
+
 }
 
 p {
@@ -52,13 +57,13 @@ h1 {
 
 .character {
   position: absolute;
-  top: 35%;
+  top: 30%;
   left: 0;
   .newCharacterLabel {
     text-align: center;
   }
   @media (max-width: 768px) {
-    top: 5%;
+    top: 25%;
   }
   img {
     width: 170px;
