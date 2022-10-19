@@ -14,13 +14,6 @@ let charactersRendered = 0;
 const contentElement = document.getElementById("content");
 const footerElement = document.getElementById("sticky-footer");
 
-// Create character counter
-const characterCounterDiv = document.createElement("div");
-characterCounterDiv.id = "character-counter";
-characterCounterDiv.innerHTML = "Characters present: ";
-characterCounterDiv.dataset.charactersPresent = 0;
-contentElement.appendChild(characterCounterDiv);
-
 const fullEventList = [
   ...events,
   ...characters.reduce((acc, character) => {

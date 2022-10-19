@@ -1,3 +1,3 @@
-# Resume
+# Stocky
 
-Resume website built with pure JS
+Stocky website built with pure JS
