@@ -69,6 +69,7 @@ h1 {
     width: 170px;
     height: 170px;
     object-fit: scale-down;
+
   }
   @media (max-width: 768px) {
     img {
@@ -101,9 +102,9 @@ h1 {
     top: 40px;
   }
   img {
-    width: 300px;
+    max-width: 700px;
     height: 300px;
-    object-fit: scale-down;
+    margin: 20px;
   }
 }
 
