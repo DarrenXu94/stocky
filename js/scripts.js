@@ -70,12 +70,6 @@ for (let event of sortedList) {
   contentElement.appendChild(newContent);
 }
 
-const modifyCharactersPresent = (val) => {
-  charactersPresent += val;
-  document.getElementById("character-counter").dataset.charactersPresent =
-    charactersPresent;
-};
-
 const TWEEN_DISTANCE = 50;
 
 // Append characters
@@ -107,10 +101,6 @@ for (let character of characters) {
     end: "top center",
     // endTrigger: departureDiv,
     toggleActions: "play reverse play reverse",
-    onEnter: () => modifyCharactersPresent(1),
-    onLeave: () => modifyCharactersPresent(-1),
-    onEnterBack: () => modifyCharactersPresent(1),
-    onLeaveBack: () => modifyCharactersPresent(-1),
   };
 
   if (character.departure) {
