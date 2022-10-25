@@ -8,9 +8,6 @@ const isLocalHost =
   location.hostname === "127.0.0.1" ||
   location.hostname === "";
 
-let charactersPresent = 0;
-let charactersRendered = 0;
-
 const contentElement = document.getElementById("content");
 const footerElement = document.getElementById("sticky-footer");
 
@@ -70,7 +67,7 @@ for (let event of sortedList) {
   contentElement.appendChild(newContent);
 }
 
-const TWEEN_DISTANCE = 50;
+const TWEEN_DISTANCE = 60;
 
 // Append characters
 for (let character of characters) {
@@ -119,8 +116,7 @@ for (let character of characters) {
     { xPercent: 0, opacity: 0 },
     {
       xPercent: () => {
-        charactersRendered += 1;
-        return charactersRendered * TWEEN_DISTANCE;
+        return character.room * TWEEN_DISTANCE;
       },
       opacity: 1,
     }

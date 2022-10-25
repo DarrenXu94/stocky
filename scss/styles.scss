@@ -44,6 +44,13 @@ h1 {
 }
 
 #sticky-footer {
+  width: 50%;
+  margin: auto;
+  height: var(--footer-height);
+  position: relative;
+}
+
+#sticky-footer-container {
   height: var(--footer-height);
   border-top: 3px solid black;
   position: fixed;
@@ -57,7 +64,7 @@ h1 {
 
 .character {
   position: absolute;
-  top: 30%;
+  top: 10%;
   left: 0;
   .newCharacterLabel {
     text-align: center;
